@@ -1,0 +1,16 @@
+.info__editing-btn {
+	width: 24px;
+	height: 24px;
+	background-color: transparent;
+	border: 1px solid #FFFFFF;
+	cursor: pointer;
+	position: absolute;
+	top: 15px;
+	left: 310px;
+	padding: 0;
+	transition: opacity 0.3s ease;
+}
+
+.info__editing-btn:hover {
+	opacity: 0.6;
+}
