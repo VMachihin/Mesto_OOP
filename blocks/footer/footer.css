@@ -3,3 +3,33 @@
 	margin: 0 auto;
 	padding: 67px 0 60px 0;
 }
+
+@media (max-width: 900px) {
+	.footer {
+		max-width: 760px;
+	}
+}
+
+@media (max-width: 787px) {
+	.footer {
+		max-width: 660px;
+	}
+}
+
+@media (max-width: 680px) {
+	.footer {
+		max-width: 450px;
+	}
+}
+
+@media (max-width: 470px) {
+	.footer {
+		max-width: 320px;
+	}
+}
+
+@media (max-width: 350px) {
+	.footer {
+		width: 282px;
+	}
+}

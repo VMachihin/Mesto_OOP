@@ -3,9 +3,14 @@
 	border: none;
 	outline: none;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-	padding: 0 0 13px 0;
+	padding: 13px 0;
 }
 
 .popup__input:nth-child(2) {
 	margin: 0;
+}
+
+.popup__input:focus {
+	outline: 3px solid rgb(41, 129, 216);
+	border-radius: 3px;
 }

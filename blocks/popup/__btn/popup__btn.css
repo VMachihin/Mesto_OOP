@@ -16,3 +16,11 @@
 .popup__btn:hover {
 	opacity: 0.8;
 }
+
+@media (max-width: 550px) {
+	.popup__btn {
+		width: 100%;
+		margin-top: 45px;
+		height: 46px;
+	}
+}

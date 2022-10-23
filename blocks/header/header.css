@@ -11,3 +11,27 @@
 	border-bottom: 1px solid #545454;
 	margin-top: 41px;
 }
+
+@media (max-width: 900px) {
+	.header {
+		max-width: 760px;
+	}
+}
+
+@media (max-width: 787px) {
+	.header {
+		max-width: 660px;
+	}
+}
+
+@media (max-width: 680px) {
+	.header {
+		max-width: 450px;
+	}
+}
+
+@media (max-width: 470px) {
+	.header {
+		max-width: 320px;
+	}
+}

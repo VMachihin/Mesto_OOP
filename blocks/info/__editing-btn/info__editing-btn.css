@@ -14,3 +14,19 @@
 .info__editing-btn:hover {
 	opacity: 0.6;
 }
+
+@media (max-width: 680px) {
+	.info__editing-btn {
+		top: 39px;
+		left: 302px;
+	}
+}
+
+@media (max-width: 470px) {
+	.info__editing-btn {
+		width: 18px;
+		height: 18px;
+		top: 32px;
+		left: 198px;
+	}
+}

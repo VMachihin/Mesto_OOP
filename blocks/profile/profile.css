@@ -5,3 +5,29 @@
 	align-items: center;
 	padding: 40px 0 0 0;
 }
+
+@media (max-width: 900px) {
+	.profile {
+		max-width: 760px;
+	}
+}
+
+@media (max-width: 787px) {
+	.profile {
+		max-width: 660px;
+	}
+}
+
+@media (max-width: 680px) {
+	.profile {
+		flex-direction: column;
+		padding: 42px 0 0 0;
+		max-width: 450px;
+	}
+}
+
+@media (max-width: 470px) {
+	.profile {
+		max-width: 320px;
+	}
+}

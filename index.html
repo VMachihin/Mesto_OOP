@@ -11,7 +11,7 @@
 
 <body class="page">
 	<header class="header">
-		<img src="./images/logo/main_logo.svg" alt="Логотип сайта с названием проекта">
+		<img src="./images/logo/main_logo.svg" alt="Логотип сайта с названием проекта" class="header__logo">
 	</header>
 
 	<main class="content">
@@ -33,9 +33,9 @@
 			<ul class="gallery__list">
 				<li class="gallery__item">
 					<article class="card">
-						<img src="./images/karachayevsk_img.jpg" alt="Картинка с красивым видом на Карачаевск" class="card__img">
+						<img src="./images/baikal_lake.jpg" alt="Картинка с красивым видом на озеро Байкал" class="card__img">
 						<div class="card__descr">
-							<h2 class="card__title">Карачаевск</h2>
+							<h2 class="card__title">Озеро Байкал</h2>
 							<img src="./images/logo/heart_logo.svg" alt="логитип сердечка для добавления в избранное"
 								class="card__favourites">
 						</div>
@@ -43,9 +43,9 @@
 				</li>
 				<li class="gallery__item">
 					<article class="card">
-						<img src="./images/mountElbrus_img.jpg" alt="Картинка с красивым видом на Карачаевск" class="card__img">
+						<img src="./images/peterhof.jpg" alt="Петергоф во всей красе" class="card__img">
 						<div class="card__descr">
-							<h2 class="card__title">Гора Эльбрус</h2>
+							<h2 class="card__title">Петергоф</h2>
 							<img src="./images/logo/heart_logo.svg" alt="логитип сердечка для добавления в избранное"
 								class="card__favourites">
 						</div>
@@ -53,9 +53,9 @@
 				</li>
 				<li class="gallery__item">
 					<article class="card">
-						<img src="./images/dombay_img.jpg" alt="Картинка с красивым видом на Карачаевск" class="card__img">
+						<img src="./images/kamchatka.jpg" alt="Картинка с красивым видом на Камчатку" class="card__img">
 						<div class="card__descr">
-							<h2 class="card__title">Домбай</h2>
+							<h2 class="card__title">Камчатка</h2>
 							<img src="./images/logo/heart_logo.svg" alt="логитип сердечка для добавления в избранное"
 								class="card__favourites">
 						</div>
@@ -63,9 +63,9 @@
 				</li>
 				<li class="gallery__item">
 					<article class="card">
-						<img src="./images/mountElbrus_img.jpg" alt="Картинка с красивым видом на Карачаевск" class="card__img">
+						<img src="./images/tuwa.jpg" alt="Осенний лес в Туве" class="card__img">
 						<div class="card__descr">
-							<h2 class="card__title">Гора Эльбрус</h2>
+							<h2 class="card__title">Тува</h2>
 							<img src="./images/logo/heart_logo.svg" alt="логитип сердечка для добавления в избранное"
 								class="card__favourites">
 						</div>
@@ -73,9 +73,9 @@
 				</li>
 				<li class="gallery__item">
 					<article class="card">
-						<img src="./images/dombay_img.jpg" alt="Картинка с красивым видом на Карачаевск" class="card__img">
+						<img src="./images/krasnoyarsk.jpg" alt="Вид на озеро в лесу в Красноярске" class="card__img">
 						<div class="card__descr">
-							<h2 class="card__title">Домбай</h2>
+							<h2 class="card__title">Красноярск</h2>
 							<img src="./images/logo/heart_logo.svg" alt="логитип сердечка для добавления в избранное"
 								class="card__favourites">
 						</div>
@@ -83,9 +83,9 @@
 				</li>
 				<li class="gallery__item">
 					<article class="card">
-						<img src="./images/karachayevsk_img.jpg" alt="Картинка с красивым видом на Карачаевск" class="card__img">
+						<img src="./images/altai.jpg" alt="Лес, горы и солнце Алтая" class="card__img">
 						<div class="card__descr">
-							<h2 class="card__title">Карачаево-Черкессия</h2>
+							<h2 class="card__title">Лес, горы и солнце Алтая</h2>
 							<img src="./images/logo/heart_logo.svg" alt="логитип сердечка для добавления в избранное"
 								class="card__favourites">
 						</div>
@@ -99,18 +99,19 @@
 		<p class="footer__info">&#169; 2022 Mesto Russia</p>
 	</footer>
 
-	<div class="popup popup_opened">
+	<div class="popup">
 		<div class="popup__container">
 			<h2 class="popup__title">Редактировать профиль</h2>
-			<div class="popup__wrp-inputs">
-				<input type="text" name="name" id="name" class="popup__input" placeholder="Введите имя">
-				<input type="text" name="profession" id="profession" class="popup__input" placeholder="Введите профессию">
-				<button class="popup__btn">Сохранить</button>
-			</div>
+			<form class="popup__wrp-inputs">
+				<input type="text" name="name" id="name" class="popup__input" value="Жак-Ив Кусто">
+				<input type="text" name="aboutMe" id="aboutMe" class="popup__input" value="Исследователь океана">
+				<button class="popup__btn" type="submit">Сохранить</button>
+			</form>
 			<img src="./images/logo/popup_close.svg" alt="крестик, что бы закрыть попап" class="popup__close">
 		</div>
 	</div>
 
+	<script src="./js/script.js"></script>
 </body>
 
 </html>
