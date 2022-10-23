@@ -17,3 +17,11 @@
 @import url('../blocks/card/__favourites/card__favourites.css');
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__info/footer__info.css');
+@import url('../blocks/popup/popup.css');
+@import url('../blocks/popup/__container/popup__container.css');
+@import url('../blocks/popup/__title/popup__title.css');
+@import url('../blocks/popup/__wrp-inputs/popup__wrp-inputs.css');
+@import url('../blocks/popup/__input/popup__input.css');
+@import url('../blocks/popup/__btn/popup__btn.css');
+@import url('../blocks/popup/_opened/popup_opened.css');
+@import url('../blocks/popup/__close/popup__close.css');
