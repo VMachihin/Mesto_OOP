@@ -9,8 +9,7 @@
 @import url('../blocks/info/__title/info__title.css');
 @import url('../blocks/info/__subtitle/info__subtitle.css');
 @import url('../blocks/info/__editing-btn/info__editing-btn.css');
-
-
+@import url('../blocks/gallery/__list/gallery__list.css');
 @import url('../blocks/card/card.css');
 @import url('../blocks/card/__img/card__img.css');
 @import url('../blocks/card/__descr/card__descr.css');
