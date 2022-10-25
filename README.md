@@ -8,3 +8,5 @@
 3. Grid.
 4. Flex-box.
 5. JavaScript.
+
+[Для просмотра работы, нажмите](https://vitotmb.github.io/mesto/index.html)
