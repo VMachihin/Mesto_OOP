@@ -5,6 +5,9 @@
 	font-weight: 500;
 	color: #FFFFFF;
 	margin: 0 18px 16px 0;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 @media (max-width: 680px) {
@@ -17,5 +20,6 @@
 	.info__title {
 		font-size: 27px;
 		line-height: 33px;
+		max-width: 250px;
 	}
 }

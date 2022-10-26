@@ -4,6 +4,8 @@
 	height: 121px;
 	border-radius: 50%;
 	margin-right: 30px;
+	object-fit: cover;
+	object-position: center;
 }
 
 @media (max-width: 680px) {

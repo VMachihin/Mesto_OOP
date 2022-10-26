@@ -20,13 +20,13 @@
 			<div class="info">
 				<div class="info__name-wrapper">
 					<h1 class="info__title">Жак-Ив Кусто</h1>
-					<button class="info__editing-btn">
+					<button type="button" class="info__editing-btn">
 						<img src="./images/logo/pencil_logo.svg" alt="Маленький карандашик в кнопке редактирования профиля">
 					</button>
 				</div>
 				<p class="info__subtitle">Исследователь океана</p>
 			</div>
-			<button class="profile__add-btn">
+			<button type="button" class="profile__add-btn">
 				<img src="./images/logo/addBtn_plus.svg" alt="Просто иконка плюс внутри кнопки">
 			</button>
 		</section>
@@ -38,8 +38,10 @@
 						<img src="./images/baikal_lake.jpg" alt="Картинка с красивым видом на озеро Байкал" class="card__img">
 						<div class="card__descr">
 							<h2 class="card__title">Озеро Байкал</h2>
-							<img src="./images/logo/heart_logo.svg" alt="логитип сердечка для добавления в избранное"
-								class="card__favourites">
+							<button type="button" class="card__btn">
+								<img src="./images/logo/heart_logo.svg" alt="логитип сердечка для добавления в избранное"
+									class="card__favourites">
+							</button>
 						</div>
 					</article>
 				</li>
@@ -48,8 +50,10 @@
 						<img src="./images/peterhof.jpg" alt="Петергоф во всей красе" class="card__img">
 						<div class="card__descr">
 							<h2 class="card__title">Петергоф</h2>
-							<img src="./images/logo/heart_logo.svg" alt="логитип сердечка для добавления в избранное"
-								class="card__favourites">
+							<button type="button" class="card__btn">
+								<img src="./images/logo/heart_logo.svg" alt="логитип сердечка для добавления в избранное"
+									class="card__favourites">
+							</button>
 						</div>
 					</article>
 				</li>
@@ -58,8 +62,10 @@
 						<img src="./images/kamchatka.jpg" alt="Картинка с красивым видом на Камчатку" class="card__img">
 						<div class="card__descr">
 							<h2 class="card__title">Камчатка</h2>
-							<img src="./images/logo/heart_logo.svg" alt="логитип сердечка для добавления в избранное"
-								class="card__favourites">
+							<button type="button" class="card__btn">
+								<img src="./images/logo/heart_logo.svg" alt="логитип сердечка для добавления в избранное"
+									class="card__favourites">
+							</button>
 						</div>
 					</article>
 				</li>
@@ -68,8 +74,10 @@
 						<img src="./images/tuwa.jpg" alt="Осенний лес в Туве" class="card__img">
 						<div class="card__descr">
 							<h2 class="card__title">Тува</h2>
-							<img src="./images/logo/heart_logo.svg" alt="логитип сердечка для добавления в избранное"
-								class="card__favourites">
+							<button type="button" class="card__btn">
+								<img src="./images/logo/heart_logo.svg" alt="логитип сердечка для добавления в избранное"
+									class="card__favourites">
+							</button>
 						</div>
 					</article>
 				</li>
@@ -78,8 +86,10 @@
 						<img src="./images/krasnoyarsk.jpg" alt="Вид на озеро в лесу в Красноярске" class="card__img">
 						<div class="card__descr">
 							<h2 class="card__title">Красноярск</h2>
-							<img src="./images/logo/heart_logo.svg" alt="логитип сердечка для добавления в избранное"
-								class="card__favourites">
+							<button type="button" class="card__btn">
+								<img src="./images/logo/heart_logo.svg" alt="логитип сердечка для добавления в избранное"
+									class="card__favourites">
+							</button>
 						</div>
 					</article>
 				</li>
@@ -88,8 +98,10 @@
 						<img src="./images/altai.jpg" alt="Лес, горы и солнце Алтая" class="card__img">
 						<div class="card__descr">
 							<h2 class="card__title">Лес, горы и солнце Алтая</h2>
-							<img src="./images/logo/heart_logo.svg" alt="логитип сердечка для добавления в избранное"
-								class="card__favourites">
+							<button type="button" class="card__btn">
+								<img src="./images/logo/heart_logo.svg" alt="логитип сердечка для добавления в избранное"
+									class="card__favourites">
+							</button>
 						</div>
 					</article>
 				</li>
@@ -104,12 +116,14 @@
 	<div class="popup">
 		<div class="popup__container">
 			<h2 class="popup__title">Редактировать профиль</h2>
-			<form class="popup__wrp-inputs">
+			<form class="popup__wrp-inputs" name="popup-window">
 				<input type="text" name="name" id="name" class="popup__input" value="Жак-Ив Кусто">
 				<input type="text" name="aboutMe" id="aboutMe" class="popup__input" value="Исследователь океана">
 				<button class="popup__btn" type="submit">Сохранить</button>
 			</form>
-			<img src="./images/logo/popup_close.svg" alt="крестик, что бы закрыть попап" class="popup__close">
+			<button type="button" class="popup__close">
+				<img src="./images/logo/popup_close.svg" alt="крестик, что бы закрыть попап">
+			</button>
 		</div>
 	</div>
 

@@ -4,6 +4,9 @@
 	right: -35px;
 	cursor: pointer;
 	transition: opacity 0.3s ease;
+	border: none;
+	background: transparent;
+	padding: 0;
 }
 
 .popup__close:hover {
