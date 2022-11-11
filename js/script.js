@@ -104,7 +104,7 @@ function createCard(title, urlImg) {
   // Удаление карточки
   const basketBtn = itemCard.querySelector('.card__btn_backet');
   basketBtn.addEventListener('click', (evt) => {
-    evt.target.parentNode.remove();
+    evt.target.parentNode.parentNode.remove();
   });
 
   cardImg.addEventListener('click', showBigImg);
