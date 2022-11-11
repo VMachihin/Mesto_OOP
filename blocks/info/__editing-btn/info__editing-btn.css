@@ -1,28 +1,29 @@
 .info__editing-btn {
-	width: 24px;
-	height: 24px;
-	background-color: transparent;
-	border: 1px solid #FFFFFF;
-	cursor: pointer;
-	margin-top: 15px;
-	padding: 0;
-	transition: opacity 0.3s ease;
+  width: 24px;
+  height: 24px;
+  background: url('../../../images/logo/pencil_logo.svg') center center no-repeat;
+  background-color: transparent;
+  border: 1px solid #FFFFFF;
+  cursor: pointer;
+  margin-top: 15px;
+  padding: 0;
+  transition: opacity 0.3s ease;
 }
 
 .info__editing-btn:hover {
-	opacity: 0.6;
+  opacity: 0.6;
 }
 
 @media (max-width: 680px) {
-	.info__editing-btn {
-		margin-top: 38px;
-	}
+  .info__editing-btn {
+    margin-top: 38px;
+  }
 }
 
 @media (max-width: 470px) {
-	.info__editing-btn {
-		width: 18px;
-		height: 18px;
-		margin-top: 32px;
-	}
+  .info__editing-btn {
+    width: 18px;
+    height: 18px;
+    margin-top: 32px;
+  }
 }

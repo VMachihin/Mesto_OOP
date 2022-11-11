@@ -1,22 +1,25 @@
 .popup__close {
-	position: absolute;
-	top: -35px;
-	right: -35px;
-	cursor: pointer;
-	transition: opacity 0.3s ease;
-	border: none;
-	background: transparent;
-	padding: 0;
+  width: 32px;
+  height: 32px;
+  background: url('../../../images/logo/popup_close.svg') center center no-repeat;
+  position: absolute;
+  top: -35px;
+  right: -35px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  border: none;
+  background-color: transparent;
+  padding: 0;
 }
 
 .popup__close:hover {
-	opacity: 0.6;
+  opacity: 0.6;
 }
 
 @media (max-width: 550px) {
-	.popup__close {
-		width: 20px;
-		height: 20px;
-		right: 0;
-	}
+  .popup__close {
+    width: 20px;
+    height: 20px;
+    right: 0;
+  }
 }

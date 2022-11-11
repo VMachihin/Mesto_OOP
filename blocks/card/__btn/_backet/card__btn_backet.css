@@ -1,0 +1,13 @@
+.card__btn_backet {
+  background: url('../../../../images/logo/basket.svg') center center/contain no-repeat;
+  width: 18px;
+  height: 19px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.card__btn_backet:hover {
+  opacity: 0.6;
+}

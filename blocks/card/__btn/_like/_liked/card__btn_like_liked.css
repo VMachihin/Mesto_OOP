@@ -1,0 +1,7 @@
+.card__btn_like_liked {
+  background: url('../../../../../images/logo/heart-like_logo.svg') center center/contain no-repeat;
+}
+
+.card__btn_like_liked:hover {
+  opacity: 1;
+}

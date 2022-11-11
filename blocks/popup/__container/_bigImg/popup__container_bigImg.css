@@ -1,0 +1,14 @@
+.popup__container_bigImg {
+  height: 75vh;
+  max-width: 75vw;
+  object-fit: cover;
+  border-radius: 0;
+  padding: 0;
+  margin-top: 90px;
+}
+
+@media(max-width: 930px) {
+  .popup__container_bigImg {
+    max-width: 75vw;
+  }
+}

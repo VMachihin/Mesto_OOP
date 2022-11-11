@@ -1,5 +1,11 @@
 .card__btn {
-	border: none;
-	background: transparent;
-	padding: 0;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.card__btn:hover {
+  opacity: 0.5;
 }

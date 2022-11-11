@@ -1,0 +1,5 @@
+.card__btn_like {
+  background: url('../../../../images/logo/heart_logo.svg') center center/ contain no-repeat;
+  width: 22px;
+  height: 19px;
+}
