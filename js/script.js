@@ -1,65 +1,49 @@
-const nameUserTitle = document.querySelector('.info__title'),
-  aboutMeText = document.querySelector('.info__subtitle'),
-  editInfoBtn = document.querySelector('.info__editing-btn'),
+import { initialCards } from './data.js';
+
+const userTitle = document.querySelector('.info__title'),
+  textAboutMe = document.querySelector('.info__subtitle'),
+  infoEditBtn = document.querySelector('.info__editing-btn'),
   profileAddBtn = document.querySelector('.profile__add-btn'),
   popupUserContent = document.querySelector('.popup_editUser'),
   popupAddCards = document.querySelector('.popup_addCards'),
-  closePopupBtns = document.querySelectorAll('.popup__close'),
+  popupCloseBtns = document.querySelectorAll('.popup__close'),
   formInfo = document.querySelector('.popup__container_editUser'),
   formAddCard = document.querySelector('.popup__container_addCard'),
-  nameInput = document.querySelector('#name'),
-  aboutMeInput = document.querySelector('#aboutMe'),
-  placeInput = document.querySelector('#place'),
-  linkImg = document.querySelector('#linkImg'),
+  inputName = document.querySelector('#name'),
+  inputAboutMe = document.querySelector('#aboutMe'),
+  inputPlace = document.querySelector('#place'),
+  inputlinkImg = document.querySelector('#linkImg'),
   popupTitleBigImg = document.querySelector('.popup__title_bigImg'),
   popupBigImg = document.querySelector('.popup_bigImg'),
   popupImages = document.querySelector('.popup__image');
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 // Открытие попапа
 function showPopup(popup) {
-  if (popup.className === 'popup popup_editUser') {
-    nameInput.value = nameUserTitle.textContent;
-    aboutMeInput.value = aboutMeText.textContent;
-
-    popup.classList.add('popup_opened');
-  } else if (popup.className === 'popup popup_addCards') {
-    placeInput.value = 'Название';
-    linkImg.value = 'Ссылка на картинку';
-
-    popup.classList.add('popup_opened');
-  }
+  popup.classList.add('popup_opened');
 }
 
 // Закрытие попапа
-function closePopup(evt) {
-  evt.target.parentNode.parentNode.classList.remove('popup_opened');
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
+
+// Проверка попапа
+function checkPopup(popup) {
+  if (popup.className === 'popup popup_editUser') {
+    inputName.placeholder = userTitle.textContent;
+    inputName.value = '';
+    inputAboutMe.placeholder = textAboutMe.textContent;
+    inputAboutMe.value = '';
+
+    showPopup(popup);
+  } else if (popup.className === 'popup popup_addCards') {
+    inputPlace.placeholder = 'Название';
+    inputPlace.value = '';
+    inputlinkImg.placeholder = 'Ссылка на картинку';
+    inputlinkImg.value = '';
+
+    showPopup(popup);
+  }
 }
 
 // Попап с большой картинкой
@@ -76,8 +60,8 @@ function showBigImg(evt) {
 function editInfoHandler(evt) {
   evt.preventDefault();
 
-  nameUserTitle.textContent = nameInput.value;
-  aboutMeText.textContent = aboutMeInput.value;
+  userTitle.textContent = inputName.value;
+  textAboutMe.textContent = inputAboutMe.value;
 
   popupUserContent.classList.remove('popup_opened');
 }
@@ -104,7 +88,7 @@ function createCard(title, urlImg) {
   // Удаление карточки
   const basketBtn = itemCard.querySelector('.card__btn_backet');
   basketBtn.addEventListener('click', (evt) => {
-    evt.target.parentNode.parentNode.remove();
+    evt.target.closest('.gallery__item').remove();
   });
 
   cardImg.addEventListener('click', showBigImg);
@@ -121,7 +105,7 @@ function renderCard(title, urlImg) {
 function addCard(evt) {
   evt.preventDefault();
 
-  renderCard(placeInput.value, linkImg.value);
+  renderCard(inputPlace.value, inputlinkImg.value);
   popupAddCards.classList.remove('popup_opened');
 }
 
@@ -129,10 +113,13 @@ initialCards.forEach(item => {
   renderCard(item.name, item.link);
 });
 
-editInfoBtn.addEventListener('click', () => showPopup(popupUserContent));
-profileAddBtn.addEventListener('click', () => showPopup(popupAddCards));
-closePopupBtns.forEach(btn => {
-  btn.addEventListener('click', closePopup);
+infoEditBtn.addEventListener('click', () => checkPopup(popupUserContent));
+profileAddBtn.addEventListener('click', () => checkPopup(popupAddCards));
+popupCloseBtns.forEach(btn => {
+  btn.addEventListener('click', (evt) => {
+    const popupCurrent = evt.target.closest('.popup');
+    closePopup(popupCurrent);
+  });
 });
 formInfo.addEventListener('submit', editInfoHandler);
 formAddCard.addEventListener('submit', addCard);

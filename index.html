@@ -28,73 +28,12 @@
     </section>
 
     <section class="gallery" aria-label="Блок с карточками красивых мест">
-      <ul class="gallery__list">
-        <!-- <li class="gallery__item">
-          <article class="card">
-            <img src="./images/baikal_lake.jpg" alt="Картинка с красивым видом на озеро Байкал" class="card__img">
-            <div class="card__descr">
-              <h2 class="card__title">Озеро Байкал</h2>
-              <button type="button" class="card__btn card__btn_like"></button>
-            </div>
-            <button type="button" class="card__btn card__btn_backet"></button>
-          </article>
-        </li>
-        <li class="gallery__item">
-          <article class="card">
-            <img src="./images/peterhof.jpg" alt="Петергоф во всей красе" class="card__img">
-            <div class="card__descr">
-              <h2 class="card__title">Петергоф</h2>
-              <button type="button" class="card__btn card__btn_like"></button>
-            </div>
-            <button type="button" class="card__btn card__btn_backet"></button>
-          </article>
-        </li>
-        <li class="gallery__item">
-          <article class="card">
-            <img src="./images/kamchatka.jpg" alt="Картинка с красивым видом на Камчатку" class="card__img">
-            <div class="card__descr">
-              <h2 class="card__title">Камчатка</h2>
-              <button type="button" class="card__btn card__btn_like"></button>
-            </div>
-            <button type="button" class="card__btn card__btn_backet"></button>
-          </article>
-        </li>
-        <li class="gallery__item">
-          <article class="card">
-            <img src="./images/tuwa.jpg" alt="Осенний лес в Туве" class="card__img">
-            <div class="card__descr">
-              <h2 class="card__title">Тува</h2>
-              <button type="button" class="card__btn card__btn_like"></button>
-            </div>
-            <button type="button" class="card__btn card__btn_backet"></button>
-          </article>
-        </li>
-        <li class="gallery__item">
-          <article class="card">
-            <img src="./images/krasnoyarsk.jpg" alt="Вид на озеро в лесу в Красноярске" class="card__img">
-            <div class="card__descr">
-              <h2 class="card__title">Красноярск</h2>
-              <button type="button" class="card__btn card__btn_like"></button>
-            </div>
-            <button type="button" class="card__btn card__btn_backet"></button>
-          </article>
-        </li>
-        <li class="gallery__item">
-          <article class="card">
-            <img src="./images/altai.jpg" alt="Лес, горы и солнце Алтая" class="card__img">
-            <div class="card__descr">
-              <h2 class="card__title">Лес, горы и солнце Алтая</h2>
-              <button type="button" class="card__btn card__btn_like"></button>
-            </div>
-            <button type="button" class="card__btn card__btn_backet"></button>
-          </article>
-        </li> -->
-      </ul>
+      <ul class="gallery__list"></ul>
 
       <template id="templateCard">
         <li class="gallery__item">
           <article class="card">
-            <img src="" alt="" class="card__img">
+            <img src="#" alt="#" class="card__img">
             <div class="card__descr">
               <h2 class="card__title"></h2>
               <button type="button" class="card__btn card__btn_like"></button>
@@ -115,8 +54,8 @@
     <div class="popup__container popup__container_editUser">
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__wrp-inputs" name="popup-editUser">
-        <input type="text" name="name" id="name" class="popup__input" value="Жак-Ив Кусто">
-        <input type="text" name="aboutMe" id="aboutMe" class="popup__input" value="Исследователь океана">
+        <input type="text" name="name" id="name" class="popup__input" placeholder="Жак-Ив Кусто">
+        <input type="text" name="aboutMe" id="aboutMe" class="popup__input" placeholder="Исследователь океана">
         <button class="popup__btn" type="submit">Сохранить</button>
       </form>
       <button type="button" class="popup__close"></button>
@@ -127,8 +66,8 @@
     <div class="popup__container popup__container_addCard">
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__wrp-inputs" name="popup-addCard">
-        <input type="text" name="place" id="place" class="popup__input" value="Название">
-        <input type="text" name="linkImg" id="linkImg" class="popup__input" value="Ссылка на картинку">
+        <input type="text" name="place" id="place" class="popup__input" placeholder="Название">
+        <input type="text" name="linkImg" id="linkImg" class="popup__input" placeholder="Ссылка на картинку">
         <button class="popup__btn" type="submit">Создать</button>
       </form>
       <button type="button" class="popup__close"></button>
@@ -137,16 +76,13 @@
 
   <div class="popup popup_bigImg">
     <div class="popup__container popup__container_bigImg">
-      <figure class="popup__slide-img">
-        <img src="" alt="картинка в попапе" class="popup__image">
-        <figcaption class="popup__title popup__title_bigImg"></figcaption>
-      </figure>
+      <img src="#" alt="картинка в попапе" class="popup__image">
+      <span class="popup__title popup__title_bigImg"></span>
       <button type="button" class="popup__close"></button>
     </div>
   </div>
 
-
-  <script src="./js/script.js"></script>
+  <script type="module" src="./js/script.js"></script>
 </body>
 
 </html>
