@@ -1,13 +1,13 @@
 .popup__container_bigImg {
-  height: 75vh;
   max-width: 75vw;
+  height: 75vh;
   object-fit: cover;
   border-radius: 0;
   padding: 0;
   margin-top: 90px;
 }
 
-@media(max-width: 930px) {
+@media (max-width: 320px) {
   .popup__container_bigImg {
     max-width: 75vw;
     height: 55vh;
