@@ -10,5 +10,6 @@
 @media(max-width: 930px) {
   .popup__container_bigImg {
     max-width: 75vw;
+    height: 55vh;
   }
 }
