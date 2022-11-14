@@ -27,29 +27,23 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-// Проверка попапа
-function checkPopup(popup) {
-  if (popup.className === 'popup popup_editUser') {
-    inputName.placeholder = userTitle.textContent;
-    inputName.value = '';
-    inputAboutMe.placeholder = textAboutMe.textContent;
-    inputAboutMe.value = '';
+// Открытие попапа редактирования профиля
+function showPopupEditProfile(popup) {
+  inputName.value = userTitle.textContent;
+  inputAboutMe.value = textAboutMe.textContent;
 
-    showPopup(popup);
-  } else if (popup.className === 'popup popup_addCards') {
-    inputPlace.placeholder = 'Название';
-    inputPlace.value = '';
-    inputlinkImg.placeholder = 'Ссылка на картинку';
-    inputlinkImg.value = '';
+  showPopup(popup);
+}
 
-    showPopup(popup);
-  }
+// Открытие попапа добавления карточки
+function showPopupAddCard(popup) {
+  showPopup(popup);
 }
 
 // Попап с большой картинкой
 function showBigImg(evt) {
   if (evt.target.className === 'card__img') {
-    popupBigImg.classList.add('popup_opened');
+    showPopup(popupBigImg);
     popupImages.src = evt.target.src;
     popupImages.alt = evt.target.alt;
     popupTitleBigImg.textContent = evt.target.nextElementSibling.textContent;
@@ -63,7 +57,7 @@ function editInfoHandler(evt) {
   userTitle.textContent = inputName.value;
   textAboutMe.textContent = inputAboutMe.value;
 
-  popupUserContent.classList.remove('popup_opened');
+  closePopup(popupUserContent);
 }
 
 const listCards = document.querySelector('.gallery__list');
@@ -106,15 +100,16 @@ function addCard(evt) {
   evt.preventDefault();
 
   renderCard(inputPlace.value, inputlinkImg.value);
-  popupAddCards.classList.remove('popup_opened');
+  closePopup(popupAddCards);
+  evt.target.reset();
 }
 
 initialCards.forEach(item => {
   renderCard(item.name, item.link);
 });
 
-infoEditBtn.addEventListener('click', () => checkPopup(popupUserContent));
-profileAddBtn.addEventListener('click', () => checkPopup(popupAddCards));
+infoEditBtn.addEventListener('click', () => showPopupEditProfile(popupUserContent));
+profileAddBtn.addEventListener('click', () => showPopupAddCard(popupAddCards));
 popupCloseBtns.forEach(btn => {
   btn.addEventListener('click', (evt) => {
     const popupCurrent = evt.target.closest('.popup');

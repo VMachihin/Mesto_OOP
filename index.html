@@ -54,8 +54,8 @@
     <div class="popup__container popup__container_editUser">
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__wrp-inputs" name="popup-editUser">
-        <input type="text" name="name" id="name" class="popup__input" placeholder="Жак-Ив Кусто">
-        <input type="text" name="aboutMe" id="aboutMe" class="popup__input" placeholder="Исследователь океана">
+        <input type="text" name="name" id="name" class="popup__input" placeholder="Имя" required>
+        <input type="text" name="aboutMe" id="aboutMe" class="popup__input" placeholder="Профессия" required>
         <button class="popup__btn" type="submit">Сохранить</button>
       </form>
       <button type="button" class="popup__close"></button>
@@ -66,8 +66,8 @@
     <div class="popup__container popup__container_addCard">
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__wrp-inputs" name="popup-addCard">
-        <input type="text" name="place" id="place" class="popup__input" placeholder="Название">
-        <input type="text" name="linkImg" id="linkImg" class="popup__input" placeholder="Ссылка на картинку">
+        <input type="text" name="place" id="place" class="popup__input" placeholder="Название" required>
+        <input type="text" name="linkImg" id="linkImg" class="popup__input" placeholder="Ссылка на картинку" required>
         <button class="popup__btn" type="submit">Создать</button>
       </form>
       <button type="button" class="popup__close"></button>
