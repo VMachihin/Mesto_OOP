@@ -39,7 +39,7 @@ function showPopupEditProfile(popup) {
   inputName.value = userTitle.textContent;
   inputAboutMe.value = textAboutMe.textContent;
 
-  setEventListeners(popupUserContent, validationSettings);
+  setEventListeners(popup, validationSettings);
 
   showPopup(popup);
 }
@@ -49,7 +49,7 @@ function showPopupAddCard(popup) {
   inputPlace.value = '';
   inputlinkImg.value = '';
 
-  setEventListeners(popupAddCards, validationSettings);
+  setEventListeners(popup, validationSettings);
 
   showPopup(popup);
 }
