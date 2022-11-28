@@ -27,11 +27,15 @@
 @import url('../blocks/popup/__container/_bigImg/popup__container_bigImg.css');
 @import url('../blocks/popup/__title/popup__title.css');
 @import url('../blocks/popup/__title/_bigImg/popup__title_bigImg.css');
-@import url('../blocks/popup/__wrp-inputs/popup__wrp-inputs.css');
+@import url('../blocks/popup/__form/popup__form.css');
 @import url('../blocks/popup/__input/popup__input.css');
+@import url('../blocks/popup/__input/_error/popup__input_error.css');
 @import url('../blocks/popup/__btn/popup__btn.css');
+@import url('../blocks/popup/__btn/_disabled/popup__btn_disabled.css');
 @import url('../blocks/popup/_opened/popup_opened.css');
 @import url('../blocks/popup/__close/popup__close.css');
 @import url('../blocks/popup/_bigImg/popup_bigImg.css');
 @import url('../blocks/popup/__slide-img/popup__slide-img.css');
 @import url('../blocks/popup/__image/popup__image.css');
+@import url('../blocks/popup/__text-error/popup__text-error.css');
+@import url('../blocks/popup/__text-error/_active/popup__text-error_active.css');
