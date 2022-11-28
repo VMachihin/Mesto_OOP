@@ -1,6 +1,7 @@
 import { initialCards } from './data.js';
 import { validationSettings } from './validate.js';
-import { enableValidation } from './validate.js';
+import { setEventListeners } from './validate.js';
+
 
 const userTitle = document.querySelector('.info__title'),
   textAboutMe = document.querySelector('.info__subtitle'),
@@ -8,7 +9,7 @@ const userTitle = document.querySelector('.info__title'),
   profileAddBtn = document.querySelector('.profile__add-btn'),
   popupUserContent = document.querySelector('.popup_editUser'),
   popupAddCards = document.querySelector('.popup_addCards'),
-  overlay = document.querySelectorAll('.popup'),
+  popups = document.querySelectorAll('.popup'),
   formInfo = document.querySelector('.popup__container_editUser'),
   formAddCard = document.querySelector('.popup__container_addCard'),
   inputName = document.querySelector('#name'),
@@ -22,11 +23,15 @@ const userTitle = document.querySelector('.info__title'),
 // Открытие попапа
 function showPopup(popup) {
   popup.classList.add('popup_opened');
+
+  document.addEventListener('keydown', closePopupByEscape);
 }
 
 // Закрытие попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+
+  document.removeEventListener('keydown', closePopupByEscape);
 }
 
 // Открытие попапа редактирования профиля
@@ -34,22 +39,26 @@ function showPopupEditProfile(popup) {
   inputName.value = userTitle.textContent;
   inputAboutMe.value = textAboutMe.textContent;
 
-  enableValidation(validationSettings);
+  setEventListeners(popupUserContent, validationSettings);
 
   showPopup(popup);
 }
 
 // Открытие попапа добавления карточки
 function showPopupAddCard(popup) {
-  showPopup(popup);
   inputPlace.value = '';
   inputlinkImg.value = '';
+
+  setEventListeners(popupAddCards, validationSettings);
+
+  showPopup(popup);
 }
 
 // Попап с большой картинкой
 function showBigImg(evt) {
   if (evt.target.className === 'card__img') {
     showPopup(popupBigImg);
+
     popupImages.src = evt.target.src;
     popupImages.alt = evt.target.alt;
     popupTitleBigImg.textContent = evt.target.nextElementSibling.textContent;
@@ -102,6 +111,7 @@ function addCard(evt) {
 
   renderCard(inputPlace.value, inputlinkImg.value);
   closePopup(popupAddCards);
+
   evt.target.reset();
 }
 
@@ -110,35 +120,30 @@ function renderCard(title, urlImg) {
   listCards.prepend(createCard(title, urlImg));
 }
 
+// Обход массива данных и запуск функции для отрисовки
 initialCards.forEach(item => {
   renderCard(item.name, item.link);
 });
 
 // Закрытие попапа на кнопку или оверлэй
-function checkCloseOptions(evt) {
-  if (evt.target.className === 'popup__close' || evt.target.classList[0] === 'popup') {
-    const popupCurrent = evt.target.closest('.popup');
-    closePopup(popupCurrent);
-  }
-}
-
-overlay.forEach(item => {
-  item.addEventListener('click', (evt) => {
-    checkCloseOptions(evt);
+popups.forEach(popup => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains('popup__close')) {
+      closePopup(popup);
+    }
   });
 });
 
 // Закрытие попапа на кнопку Escape
-window.addEventListener('keydown', (evt) => {
+function closePopupByEscape(evt) {
   if (evt.key === 'Escape') {
-    overlay.forEach(item => closePopup(item));
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
   }
-});
-window.removeEventListener('keydown', (evt) => {
-  if (evt.key === 'Escape') {
-    overlay.forEach(item => closePopup(item));
-  }
-});
+}
 
 infoEditBtn.addEventListener('click', () => showPopupEditProfile(popupUserContent));
 profileAddBtn.addEventListener('click', () => showPopupAddCard(popupAddCards));

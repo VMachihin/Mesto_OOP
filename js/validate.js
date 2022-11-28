@@ -8,73 +8,74 @@ export const validationSettings = {
 };
 
 // Запуск валидации
-export function enableValidation(settings) {
-  const formSelector = Array.from(document.querySelectorAll(settings.formSelector));
+function enableValidation(settings) {
+  const forms = Array.from(document.querySelectorAll(settings.formSelector));
 
-  formSelector.forEach(form => {
-    setEventListeners(form);
+  forms.forEach(form => {
+    setEventListeners(form, settings);
   });
+}
 
-  // Вешаем обработчик события на все инпуты
-  function setEventListeners(formSelector) {
-    const inputSelector = Array.from(formSelector.querySelectorAll(validationSettings.inputSelector));
-    const popupBtn = formSelector.querySelector(validationSettings.submitButtonSelector);
+// Вешаем обработчик события на все инпуты
+export function setEventListeners(formSelector, settings) {
+  const inputs = Array.from(formSelector.querySelectorAll(settings.inputSelector));
+  const popupBtn = formSelector.querySelector(settings.submitButtonSelector);
 
-    changeButtonStyle(inputSelector, popupBtn);
+  changeButtonStyle(inputs, popupBtn, settings);
 
-    inputSelector.forEach(popupInput => {
-      popupInput.addEventListener('input', () => {
-        checkInputValidity(formSelector, popupInput);
-        changeButtonStyle(inputSelector, popupBtn);
-      });
+  inputs.forEach(popupInput => {
+    popupInput.addEventListener('input', () => {
+      checkInputValidity(formSelector, popupInput, settings);
+      changeButtonStyle(inputs, popupBtn, settings);
     });
-  }
+  });
+}
 
-  // Проверка валидации инпута через интерфейс ValidityState
-  function checkInputValidity(popupForm, popupInput) {
-    if (!popupInput.validity.valid) {
-      showError(popupForm, popupInput, popupInput.validationMessage);
-    } else {
-      hideError(popupForm, popupInput);
-    }
-  }
-
-  // Функция для вывода сообщения об ошибке
-  function showError(popupForm, popupInput, errorMessage) {
-    const popupErrorText = popupForm.querySelector(`.${popupInput.id}-error`);
-
-    popupInput.classList.add(validationSettings.inputErrorClass);
-
-    popupErrorText.textContent = errorMessage;
-    popupErrorText.classList.add(validationSettings.errorClass);
-  }
-
-  // Функция скрытия сообщения об ошибке
-  function hideError(popupForm, popupInput) {
-    const popupErrorText = popupForm.querySelector(`.${popupInput.id}-error`);
-
-    popupInput.classList.remove(validationSettings.inputErrorClass);
-
-    popupErrorText.textContent = '';
-    popupErrorText.classList.remove(validationSettings.errorClass);
-  }
-
-  // Проверка массива инпутов на то, что все они прохотят валидацию или нет.
-  function checkInputItems(popupInputs) {
-    return popupInputs.some(input => {
-      return !input.validity.valid;
-    });
-  }
-
-  // Изменение состояния кнопки, в зависимости от валидности инпутов.
-  function changeButtonStyle(popupInputs, popupBtn) {
-    if (!checkInputItems(popupInputs)) {
-      popupBtn.classList.remove(validationSettings.inactiveButtonClass);
-      popupBtn.removeAttribute('disabled', 'disabled');
-    } else {
-      popupBtn.classList.add(validationSettings.inactiveButtonClass);
-      popupBtn.setAttribute('disabled', 'disabled');
-    }
+// Проверка валидации инпута через интерфейс ValidityState
+function checkInputValidity(popupForm, popupInput, settings) {
+  if (!popupInput.validity.valid) {
+    showError(popupForm, popupInput, popupInput.validationMessage, settings);
+  } else {
+    hideError(popupForm, popupInput, settings);
   }
 }
+
+// Функция для вывода сообщения об ошибке
+function showError(popupForm, popupInput, errorMessage, settings) {
+  const textError = popupForm.querySelector(`.${popupInput.id}-error`);
+
+  popupInput.classList.add(settings.inputErrorClass);
+
+  textError.textContent = errorMessage;
+  textError.classList.add(settings.errorClass);
+}
+
+// Функция скрытия сообщения об ошибке
+function hideError(popupForm, popupInput, settings) {
+  const textError = popupForm.querySelector(`.${popupInput.id}-error`);
+
+  popupInput.classList.remove(settings.inputErrorClass);
+
+  textError.textContent = '';
+  textError.classList.remove(settings.errorClass);
+}
+
+// Проверка массива инпутов на то, что все они прохотят валидацию или нет.
+function checkInputItems(popupInputs) {
+  return popupInputs.some(input => {
+    return !input.validity.valid;
+  });
+}
+
+// Изменение состояния кнопки, в зависимости от валидности инпутов.
+export function changeButtonStyle(popupInputs, popupBtn, settings) {
+  if (!checkInputItems(popupInputs)) {
+    popupBtn.classList.remove(settings.inactiveButtonClass);
+    popupBtn.removeAttribute('disabled', 'disabled');
+  } else {
+    popupBtn.classList.add(settings.inactiveButtonClass);
+    popupBtn.setAttribute('disabled', 'disabled');
+  }
+}
+
 enableValidation(validationSettings);
