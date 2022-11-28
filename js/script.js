@@ -1,4 +1,6 @@
 import { initialCards } from './data.js';
+import { validationSettings } from './validate.js';
+import { enableValidation } from './validate.js';
 
 const userTitle = document.querySelector('.info__title'),
   textAboutMe = document.querySelector('.info__subtitle'),
@@ -31,6 +33,8 @@ function closePopup(popup) {
 function showPopupEditProfile(popup) {
   inputName.value = userTitle.textContent;
   inputAboutMe.value = textAboutMe.textContent;
+
+  enableValidation(validationSettings);
 
   showPopup(popup);
 }

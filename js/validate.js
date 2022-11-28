@@ -1,4 +1,4 @@
-const validationSettings = {
+export const validationSettings = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__btn',
@@ -8,7 +8,7 @@ const validationSettings = {
 };
 
 // Запуск валидации
-function enableValidation(settings) {
+export function enableValidation(settings) {
   const formSelector = Array.from(document.querySelectorAll(settings.formSelector));
 
   formSelector.forEach(form => {
