@@ -5,9 +5,11 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, scale 0.2s ease, rotate 0.3s linear;
 }
 
 .card__btn_backet:hover {
   opacity: 0.6;
+  scale: 1.2;
+  rotate: 360deg;
 }

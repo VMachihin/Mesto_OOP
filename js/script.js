@@ -6,7 +6,7 @@ const userTitle = document.querySelector('.info__title'),
   profileAddBtn = document.querySelector('.profile__add-btn'),
   popupUserContent = document.querySelector('.popup_editUser'),
   popupAddCards = document.querySelector('.popup_addCards'),
-  popupCloseBtns = document.querySelectorAll('.popup__close'),
+  overlay = document.querySelectorAll('.popup'),
   formInfo = document.querySelector('.popup__container_editUser'),
   formAddCard = document.querySelector('.popup__container_addCard'),
   inputName = document.querySelector('#name'),
@@ -38,6 +38,8 @@ function showPopupEditProfile(popup) {
 // Открытие попапа добавления карточки
 function showPopupAddCard(popup) {
   showPopup(popup);
+  inputPlace.value = '';
+  inputlinkImg.value = '';
 }
 
 // Попап с большой картинкой
@@ -90,11 +92,6 @@ function createCard(title, urlImg) {
   return itemCard;
 }
 
-// Отрисовка карточки на странице
-function renderCard(title, urlImg) {
-  listCards.prepend(createCard(title, urlImg));
-}
-
 // Добавление карточки на странице
 function addCard(evt) {
   evt.preventDefault();
@@ -104,17 +101,42 @@ function addCard(evt) {
   evt.target.reset();
 }
 
+// Отрисовка карточки на странице
+function renderCard(title, urlImg) {
+  listCards.prepend(createCard(title, urlImg));
+}
+
 initialCards.forEach(item => {
   renderCard(item.name, item.link);
 });
 
-infoEditBtn.addEventListener('click', () => showPopupEditProfile(popupUserContent));
-profileAddBtn.addEventListener('click', () => showPopupAddCard(popupAddCards));
-popupCloseBtns.forEach(btn => {
-  btn.addEventListener('click', (evt) => {
+// Закрытие попапа на кнопку или оверлэй
+function checkCloseOptions(evt) {
+  if (evt.target.className === 'popup__close' || evt.target.classList[0] === 'popup') {
     const popupCurrent = evt.target.closest('.popup');
     closePopup(popupCurrent);
+  }
+}
+
+overlay.forEach(item => {
+  item.addEventListener('click', (evt) => {
+    checkCloseOptions(evt);
   });
 });
+
+// Закрытие попапа на кнопку Escape
+window.addEventListener('keydown', (evt) => {
+  if (evt.key === 'Escape') {
+    overlay.forEach(item => closePopup(item));
+  }
+});
+window.removeEventListener('keydown', (evt) => {
+  if (evt.key === 'Escape') {
+    overlay.forEach(item => closePopup(item));
+  }
+});
+
+infoEditBtn.addEventListener('click', () => showPopupEditProfile(popupUserContent));
+profileAddBtn.addEventListener('click', () => showPopupAddCard(popupAddCards));
 formInfo.addEventListener('submit', editInfoHandler);
 formAddCard.addEventListener('submit', addCard);
