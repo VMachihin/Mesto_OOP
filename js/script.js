@@ -1,6 +1,7 @@
 import { initialCards } from './data.js';
 import { validationSettings } from './validate.js';
-import { setEventListeners } from './validate.js';
+import { addBtnClass } from './validate.js';
+import { removeBtnClass } from './validate.js';
 
 
 const userTitle = document.querySelector('.info__title'),
@@ -18,7 +19,9 @@ const userTitle = document.querySelector('.info__title'),
   inputlinkImg = document.querySelector('#linkImg'),
   popupTitleBigImg = document.querySelector('.popup__title_bigImg'),
   popupBigImg = document.querySelector('.popup_bigImg'),
-  popupImages = document.querySelector('.popup__image');
+  popupImages = document.querySelector('.popup__image'),
+  popupButtonSave = document.querySelector('.popup__btn_save'),
+  popupButtonCreate = document.querySelector('.popup__btn_create');
 
 // Открытие попапа
 function showPopup(popup) {
@@ -39,7 +42,7 @@ function showPopupEditProfile(popup) {
   inputName.value = userTitle.textContent;
   inputAboutMe.value = textAboutMe.textContent;
 
-  setEventListeners(popup, validationSettings);
+  removeBtnClass(popupButtonSave, validationSettings);
 
   showPopup(popup);
 }
@@ -49,7 +52,7 @@ function showPopupAddCard(popup) {
   inputPlace.value = '';
   inputlinkImg.value = '';
 
-  setEventListeners(popup, validationSettings);
+  addBtnClass(popupButtonCreate, validationSettings);
 
   showPopup(popup);
 }
