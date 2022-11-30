@@ -17,7 +17,7 @@ function enableValidation(settings) {
 }
 
 // Вешаем обработчик события на все инпуты
-export function setEventListeners(formSelector, settings) {
+function setEventListeners(formSelector, settings) {
   const inputs = Array.from(formSelector.querySelectorAll(settings.inputSelector));
   const popupBtn = formSelector.querySelector(settings.submitButtonSelector);
 
@@ -68,14 +68,22 @@ function checkInputItems(popupInputs) {
 }
 
 // Изменение состояния кнопки, в зависимости от валидности инпутов.
-export function changeButtonStyle(popupInputs, popupBtn, settings) {
+function changeButtonStyle(popupInputs, popupBtn, settings) {
   if (!checkInputItems(popupInputs)) {
-    popupBtn.classList.remove(settings.inactiveButtonClass);
-    popupBtn.removeAttribute('disabled', 'disabled');
+    removeBtnClass(popupBtn, settings);
   } else {
-    popupBtn.classList.add(settings.inactiveButtonClass);
-    popupBtn.setAttribute('disabled', 'disabled');
+    addBtnClass(popupBtn, settings);
   }
 }
+export function removeBtnClass(popupBtn, settings) {
+  popupBtn.classList.remove(settings.inactiveButtonClass);
+  popupBtn.removeAttribute('disabled', 'disabled');
+}
+export function addBtnClass(popupBtn, settings) {
+  popupBtn.classList.add(settings.inactiveButtonClass);
+  popupBtn.setAttribute('disabled', 'disabled');
+}
+
+
 
 enableValidation(validationSettings);
