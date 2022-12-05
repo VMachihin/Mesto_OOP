@@ -68,22 +68,14 @@ function checkInputItems(popupInputs) {
 }
 
 // Изменение состояния кнопки, в зависимости от валидности инпутов.
-function changeButtonStyle(popupInputs, popupBtn, settings) {
+export function changeButtonStyle(popupInputs, popupBtn, settings) {
   if (!checkInputItems(popupInputs)) {
-    removeBtnClass(popupBtn, settings);
+    popupBtn.classList.remove(settings.inactiveButtonClass);
+    popupBtn.removeAttribute('disabled', 'disabled');
   } else {
-    addBtnClass(popupBtn, settings);
+    popupBtn.classList.add(settings.inactiveButtonClass);
+    popupBtn.setAttribute('disabled', 'disabled');
   }
 }
-export function removeBtnClass(popupBtn, settings) {
-  popupBtn.classList.remove(settings.inactiveButtonClass);
-  popupBtn.removeAttribute('disabled', 'disabled');
-}
-export function addBtnClass(popupBtn, settings) {
-  popupBtn.classList.add(settings.inactiveButtonClass);
-  popupBtn.setAttribute('disabled', 'disabled');
-}
-
-
 
 enableValidation(validationSettings);

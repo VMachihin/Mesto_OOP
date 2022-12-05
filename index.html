@@ -54,11 +54,11 @@
     <div class="popup__container popup__container_editUser">
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" name="popup-editUser" novalidate>
-        <input type="text" name="name" id="name" class="popup__input" placeholder="Имя" required minlength="2"
-          maxlength="40">
+        <input type="text" name="name" id="name" class="popup__input popup__input_edit" placeholder="Имя" required
+          minlength="2" maxlength="40">
         <span class="popup__text-error name-error"></span>
-        <input type="text" name="aboutMe" id="aboutMe" class="popup__input" placeholder="Профессия" required
-          minlength="2" maxlength="200">
+        <input type="text" name="aboutMe" id="aboutMe" class="popup__input popup__input_edit" placeholder="Профессия"
+          required minlength="2" maxlength="200">
         <span class="popup__text-error aboutMe-error"></span>
         <button class="popup__btn popup__btn_save" type="submit">Сохранить</button>
       </form>
@@ -70,10 +70,11 @@
     <div class="popup__container popup__container_addCard">
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__form" name="popup-addCard" novalidate>
-        <input type="text" name="place" id="place" class="popup__input" placeholder="Название" required minlength="2"
-          maxlength="40">
+        <input type="text" name="place" id="place" class="popup__input popup__input_addCard" placeholder="Название"
+          required minlength="2" maxlength="40">
         <span class="popup__text-error place-error"></span>
-        <input type="url" name="linkImg" id="linkImg" class="popup__input" placeholder="Ссылка на картинку" required>
+        <input type="url" name="linkImg" id="linkImg" class="popup__input popup__input_addCard"
+          placeholder="Ссылка на картинку" required>
         <span class="popup__text-error linkImg-error"></span>
         <button class="popup__btn popup__btn_create" type="submit">Создать</button>
       </form>
