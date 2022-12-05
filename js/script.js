@@ -1,7 +1,6 @@
 import { initialCards } from './data.js';
 import { validationSettings } from './validate.js';
-import { addBtnClass } from './validate.js';
-import { removeBtnClass } from './validate.js';
+import { changeButtonStyle } from './validate.js';
 
 
 const userTitle = document.querySelector('.info__title'),
@@ -20,6 +19,8 @@ const userTitle = document.querySelector('.info__title'),
   popupTitleBigImg = document.querySelector('.popup__title_bigImg'),
   popupBigImg = document.querySelector('.popup_bigImg'),
   popupImages = document.querySelector('.popup__image'),
+  popupInputsEdit = Array.from(document.querySelectorAll('.popup__input_edit')),
+  popupInputAddCard = Array.from(document.querySelectorAll('.popup__input_addCard')),
   popupButtonSave = document.querySelector('.popup__btn_save'),
   popupButtonCreate = document.querySelector('.popup__btn_create');
 
@@ -42,7 +43,7 @@ function showPopupEditProfile(popup) {
   inputName.value = userTitle.textContent;
   inputAboutMe.value = textAboutMe.textContent;
 
-  removeBtnClass(popupButtonSave, validationSettings);
+  changeButtonStyle(popupInputsEdit, popupButtonSave, validationSettings);
 
   showPopup(popup);
 }
@@ -52,7 +53,7 @@ function showPopupAddCard(popup) {
   inputPlace.value = '';
   inputlinkImg.value = '';
 
-  addBtnClass(popupButtonCreate, validationSettings);
+  changeButtonStyle(popupInputAddCard, popupButtonCreate, validationSettings);
 
   showPopup(popup);
 }
