@@ -1,6 +1,5 @@
 import { initialCards } from './data.js';
-import { validationSettings } from './validate.js';
-import { changeButtonStyle } from './validate.js';
+import { validationSettings, changeButtonStyle } from './validate.js';
 
 
 const userTitle = document.querySelector('.info__title'),
