@@ -1,42 +1,39 @@
-import { initialCards } from './data.js';
-import { showPopup } from './index.js';
-
 export class Card {
-  constructor(title, urlImg, templateSelector) {
-    this._title = title;
-    this._urlImg = urlImg;
+  constructor(data, templateSelector, handleCardClick) {
+    this._title = data.name;
+    this._urlImg = data.link;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
-    const itemCard = document.querySelector(this._templateSelector)
+    this._itemCard = document.querySelector(this._templateSelector)
       .content.querySelector('.gallery__item')
       .cloneNode(true);
 
-    return itemCard;
+    return this._itemCard;
   }
 
   createCard() {
     this._cardElement = this._getTemplate();
 
-    const cardImg = this._cardElement.querySelector('.card__img');
-    cardImg.src = this._urlImg;
-    cardImg.alt = `Картинка с красивым видом на ${this._title}`;
+    this._cardImg = this._cardElement.querySelector('.card__img');
+    this._cardImg.src = this._urlImg;
+    this._cardImg.alt = `Картинка с красивым видом на ${this._title}`;
 
     this._cardElement.querySelector('.card__title').textContent = this._title;
 
-    this._setEventListener(this._cardElement);
+    this._setEventListener();
 
     return this._cardElement;
   }
 
-  _toggleLike(elem) {
-    elem.target.classList.toggle('card__btn_like_liked');
+  _toggleLike(evt) {
+    evt.target.classList.toggle('card__btn_like_liked');
   }
 
-  _deleteCard(elem) {
-    // Удаление карточки
-    elem.target.closest('.gallery__item').remove();
+  _deleteCard(evt) {
+    evt.target.closest('.gallery__item').remove();
   }
 
   _setEventListener() {
@@ -51,27 +48,8 @@ export class Card {
     });
 
     // Попап с большой картинкой
-    this._cardElement.querySelector('.card__img').addEventListener('click', (evt) => {
-      this._showBigImg(evt);
+    this._cardImg.addEventListener('click', () => {
+      this._handleCardClick(this._title, this._urlImg);
     });
   }
-
-  _showBigImg(elem) {
-    const popupBigImg = document.querySelector('.popup_bigImg');
-    const popupImages = document.querySelector('.popup__image');
-    const popupTitleBigImg = document.querySelector('.popup__title_bigImg');
-
-    if (elem.target.className === 'card__img') {
-      showPopup(popupBigImg);
-
-      popupImages.src = elem.target.src;
-      popupImages.alt = elem.target.alt;
-      popupTitleBigImg.textContent = elem.target.nextElementSibling.textContent;
-    }
-  }
 }
-
-initialCards.forEach(item => {
-  const card = new Card(item.name, item.link, '#templateCard');
-  document.querySelector('.gallery__list').prepend(card.createCard());
-});
