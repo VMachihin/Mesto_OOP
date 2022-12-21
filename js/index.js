@@ -1,5 +1,6 @@
 import { FormValidator, validationSettings } from './FormValidator.js';
 import { Card } from './Card.js';
+import { initialCards } from './data.js';
 
 
 const userTitle = document.querySelector('.info__title'),
@@ -8,20 +9,42 @@ const userTitle = document.querySelector('.info__title'),
   profileAddBtn = document.querySelector('.profile__add-btn'),
   popupUserContent = document.querySelector('.popup_editUser'),
   popupAddCards = document.querySelector('.popup_addCards'),
+  popupBigImg = document.querySelector('.popup_bigImg'),
+  popupImages = document.querySelector('.popup__image'),
+  popupTitleBigImg = document.querySelector('.popup__title_bigImg'),
   popups = document.querySelectorAll('.popup'),
-  formInfo = document.querySelector('.popup__container_editUser'),
-  formAddCard = document.querySelector('.popup__container_addCard'),
+  formInfo = document.forms['popup-editUser'],
+  formAddCard = document.forms['popup-addCard'],
   inputName = document.querySelector('#name'),
   inputAboutMe = document.querySelector('#aboutMe'),
   inputPlace = document.querySelector('#place'),
   inputlinkImg = document.querySelector('#linkImg'),
   cardsListItem = document.querySelector('.gallery__list');
 
-const newFormInfo = new FormValidator(formInfo, validationSettings);
-const newFormAddCard = new FormValidator(formAddCard, validationSettings);
+// Плюшки от Геннадия Барсегяна)
+const formValidators = {};
+
+// Включение валидации
+const enableValidation = (settings) => {
+  const formList = Array.from(document.querySelectorAll(settings.formSelector));
+
+  formList.forEach((formElement) => {
+
+    const validator = new FormValidator(formElement, settings);
+
+    // получаем данные из атрибута `name` у формы
+    const formName = formElement.getAttribute('name');
+
+    // вот тут в объект записываем под именем формы
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
+enableValidation(validationSettings);
 
 // Открытие попапа
-export function showPopup(popup) {
+function showPopup(popup) {
   popup.classList.add('popup_opened');
 
   document.addEventListener('keydown', closePopupByEscape);
@@ -30,8 +53,16 @@ export function showPopup(popup) {
 // Закрытие попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  document.addEventListener('keydown', closePopupByEscape);
+
   document.removeEventListener('keydown', closePopupByEscape);
+}
+
+function handleCardClick(name, link) {
+  popupImages.src = link;
+  popupImages.alt = name;
+  popupTitleBigImg.textContent = name;
+
+  showPopup(popupBigImg);
 }
 
 // Открытие попапа редактирования профиля
@@ -39,24 +70,25 @@ function showPopupEditProfile(popup) {
   inputName.value = userTitle.textContent;
   inputAboutMe.value = textAboutMe.textContent;
 
-  newFormInfo.changeButtonStyle();
+  formValidators['popup-editUser'].resetValidation();
 
   showPopup(popup);
 }
 
 // Открытие попапа добавления карточки
 function showPopupAddCard(popup) {
-  inputPlace.value = '';
-  inputlinkImg.value = '';
+  formAddCard.reset();
 
-  newFormAddCard.changeButtonStyle();
+  formValidators['popup-addCard'].resetValidation();
 
   showPopup(popup);
 }
 
 // Редактирование информации о пользователе на странице
-function editInfoHandler(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
+
+  formValidators['popup-editUser'].resetValidation();
 
   userTitle.textContent = inputName.value;
   textAboutMe.textContent = inputAboutMe.value;
@@ -68,8 +100,11 @@ function editInfoHandler(evt) {
 function addCard(evt) {
   evt.preventDefault();
 
-  const newCard = new Card(inputPlace.value, inputlinkImg.value, '#templateCard');
-  cardsListItem.prepend(newCard.createCard());
+  const userCard = {
+    name: inputPlace.value,
+    link: inputlinkImg.value
+  };
+  makeCard(userCard);
 
   closePopup(popupAddCards);
 
@@ -96,9 +131,17 @@ function closePopupByEscape(evt) {
   }
 }
 
+// Создание карточки
+function makeCard(card) {
+  const cardItem = new Card(card, '#templateCard', handleCardClick);
+  cardsListItem.prepend(cardItem.createCard());
+}
+
+initialCards.forEach(card => {
+  makeCard(card);
+});
+
 infoEditBtn.addEventListener('click', () => showPopupEditProfile(popupUserContent));
 profileAddBtn.addEventListener('click', () => showPopupAddCard(popupAddCards));
-formInfo.addEventListener('submit', editInfoHandler);
+formInfo.addEventListener('submit', handleProfileFormSubmit);
 formAddCard.addEventListener('submit', addCard);
-newFormInfo.enableValidation();
-newFormAddCard.enableValidation();
