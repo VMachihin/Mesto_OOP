@@ -1,7 +1,7 @@
-export class Card {
-  constructor(data, templateSelector, handleCardClick) {
-    this._title = data.name;
-    this._urlImg = data.link;
+export default class Card {
+  constructor({ name, link }, templateSelector, handleCardClick) {
+    this._title = name;
+    this._urlImg = link;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
   }
@@ -14,7 +14,7 @@ export class Card {
     return this._itemCard;
   }
 
-  createCard() {
+  makeCard() {
     this._cardElement = this._getTemplate();
 
     this._cardImg = this._cardElement.querySelector('.card__img');
@@ -43,7 +43,7 @@ export class Card {
     });
 
     // Удаление карточки
-    this._cardElement.querySelector('.card__btn_backet').addEventListener('click', (evt) => {
+    this._cardElement.querySelector('.card__btn_basket').addEventListener('click', (evt) => {
       this._deleteCard(evt);
     });
 
