@@ -1,13 +1,7 @@
 import './index.css';
 
-import { FormValidator, validationSettings } from '../components/FormValidator.js';
-import initialCards from '../utils/data.js';
-import Card from '../components/Card.js';
-import Section from '../components/Section.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import UserInfo from '../components/UserInfo.js';
 import {
+  templateCard,
   infoEditBtn,
   profileAddBtn,
   popupUserContent,
@@ -16,7 +10,15 @@ import {
   inputName,
   inputAboutMe,
   cardsListItem,
+  initialCards
 } from '../utils/constants.js';
+import Card from '../components/Card.js';
+import Section from '../components/Section.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
+import FormValidator from '../components/FormValidator.js';
+import { validationSettings } from '../utils/constants.js';
 
 // Плюшки от Геннадия Барсегяна)
 const formValidators = {};
@@ -52,14 +54,6 @@ const editUserForm = {
 };
 const userInfo = new UserInfo(editUserForm);
 
-infoEditBtn.addEventListener('click', () => {
-  popupUserInfo.open();
-  userInfo.getUserInfo();
-  userInfo.setUserInfo();
-  formValidators['popup-editUser'].resetValidation();
-});
-popupUserInfo.setEventListeners();
-
 const popupAddCard = new PopupWithForm({
   selector: popupAddCards, handleFormSubmit: (inputsData) => {
 
@@ -72,12 +66,6 @@ const popupAddCard = new PopupWithForm({
     popupAddCard.close();
   }
 });
-
-profileAddBtn.addEventListener('click', () => {
-  popupAddCard.open();
-  formValidators['popup-addCard'].resetValidation();
-});
-popupAddCard.setEventListeners();
 
 const cardList = new Section({
   data: initialCards, renderer: (item) => {
@@ -94,8 +82,22 @@ function handleCardClick(name, link) {
 }
 
 function createCard(element) {
-  const card = new Card(element, '#templateCard', handleCardClick);
+  const card = new Card(element, templateCard, handleCardClick);
   const cardElemenent = card.makeCard();
 
   return cardElemenent;
 }
+
+infoEditBtn.addEventListener('click', () => {
+  popupUserInfo.open();
+  userInfo.getUserInfo();
+  userInfo.setUserInfo();
+  formValidators['popup-editUser'].resetValidation();
+});
+popupUserInfo.setEventListeners();
+
+profileAddBtn.addEventListener('click', () => {
+  popupAddCard.open();
+  formValidators['popup-addCard'].resetValidation();
+});
+popupAddCard.setEventListeners();

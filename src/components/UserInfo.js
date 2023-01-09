@@ -1,24 +1,22 @@
-import { userTitle, textAboutMe } from '../utils/constants.js';
-
 export default class UserInfo {
   constructor({ name, aboutMe }) {
-    this._username = name;
+    this._userName = name;
     this._userInfo = aboutMe;
+    this._userTitle = document.querySelector('.info__title');
+    this._textAboutMe = document.querySelector('.info__subtitle');
   }
 
   getUserInfo() {
-    const userInputValue = {};
-
-    userInputValue.name = this._username.value;
-    userInputValue.aboutMe = this._userInfo.value;
-
-    return userInputValue;
+    return {
+      userName: this._userName.value,
+      userAboutMe: this._userInfo.value
+    };
   }
 
   setUserInfo() {
     const newUserData = this.getUserInfo();
 
-    userTitle.textContent = newUserData.name;
-    textAboutMe.textContent = newUserData.aboutMe;
+    this._userTitle.textContent = newUserData.userName;
+    this._textAboutMe.textContent = newUserData.userAboutMe;
   }
 }

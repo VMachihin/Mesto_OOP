@@ -1,5 +1,4 @@
 import Popup from "./Popup.js";
-import { userTitle, textAboutMe, inputName, inputAboutMe } from "../utils/constants.js";
 
 export default class PopupWithForm extends Popup {
   constructor({ selector, handleFormSubmit }) {
@@ -7,6 +6,10 @@ export default class PopupWithForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
     this._inputList = document.querySelectorAll('.popup__input');
     this._formElement = selector.querySelector('.popup__form');
+    this._userTitle = document.querySelector('.info__title');
+    this._textAboutMe = document.querySelector('.info__subtitle');
+    this._inputName = document.querySelector('#name');
+    this._inputAboutMe = document.querySelector('#aboutMe');
   }
 
   _getInputValues() {
@@ -20,16 +23,14 @@ export default class PopupWithForm extends Popup {
   }
 
   open() {
-    inputName.value = userTitle.textContent;
-    inputAboutMe.value = textAboutMe.textContent;
+    this._inputName.value = this._userTitle.textContent;
+    this._inputAboutMe.value = this._textAboutMe.textContent;
 
     super.open();
   }
 
   close() {
-    if (this._formElement.name === 'popup-addCard') {
-      this._formElement.reset();
-    }
+    this._formElement.reset();
 
     super.close();
   }
