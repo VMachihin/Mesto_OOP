@@ -4,7 +4,7 @@ export default class Popup {
   constructor(selector) {
     this._selector = selector;
     this._buttonKey = 'Escape';
-    this._handleEscClose = this._handleEscClose.bind(this);/* вручную привязываем функцию к this, 
+    this._handleEscClose = this._handleEscClose.bind(this); /* вручную привязываем функцию к this, 
     что бы корректно добавлялся и удалялся обработчик */
   }
 
@@ -27,7 +27,7 @@ export default class Popup {
   }
 
   setEventListeners() {
-    popups.forEach(popup => {
+    popups.forEach((popup) => {
       popup.addEventListener('mousedown', (evt) => {
         if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__close')) {
           this.close();
@@ -36,4 +36,3 @@ export default class Popup {
     });
   }
 }
-
