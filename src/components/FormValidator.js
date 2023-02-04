@@ -31,7 +31,7 @@ export default class FormValidator {
   }
 
   _checkInputItems() {
-    return this._inputs.some(input => {
+    return this._inputs.some((input) => {
       return !input.validity.valid;
     });
   }
@@ -42,7 +42,7 @@ export default class FormValidator {
 
     this._changeButtonStyle();
 
-    this._inputs.forEach(input => {
+    this._inputs.forEach((input) => {
       input.addEventListener('input', () => {
         this._checkInputValidity(input);
         this._changeButtonStyle();
@@ -53,7 +53,7 @@ export default class FormValidator {
   resetValidation() {
     this._changeButtonStyle();
 
-    this._inputs.forEach(input => {
+    this._inputs.forEach((input) => {
       this.hideError(input);
     });
   }
@@ -72,4 +72,3 @@ export default class FormValidator {
     this._setEventListeners();
   }
 }
-

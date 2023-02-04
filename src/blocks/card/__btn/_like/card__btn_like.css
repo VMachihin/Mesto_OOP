@@ -3,6 +3,7 @@
   width: 22px;
   height: 19px;
   transition: scale 0.3s ease-in-out;
+  margin-bottom: 3px;
 }
 
 .card__btn_like:hover {
