@@ -6,9 +6,9 @@ export default class Section {
   }
 
   // Проход по массиву данных и отрисовка всех карточек
-  renderCards() {
+  renderCards(myId) {
     this._items.forEach(item => {
-      this._renderer(item);
+      this._renderer(item, myId);
     });
   }
 
