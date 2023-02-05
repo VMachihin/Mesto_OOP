@@ -98,21 +98,23 @@ function handleCardClick(name, link) {
   popupWithImage.setEventListeners();
 }
 
-// попап удаления карточки
-function handleDeleteCard(cardId, element, card) {
-  const popupDelCard = new PopupWithConfirmation({
-    selector: popupDeleteCard,
-    handleFormSubmit: () => {
-      api.deleteCardApi(cardId);
+// удаления карточки
+const popupDelCard = new PopupWithConfirmation({
+  selector: popupDeleteCard,
+  handleFormSubmit: deleteCardApi
+});
+popupDelCard.setEventListeners();
 
-      card.deleteCard(element);
+function handleDeleteCard(cardId, cardElement, card) {
+  popupDelCard.open(cardId, cardElement, card);
+}
 
+function deleteCardApi(cardId, cardElement, card) {
+  api.deleteCardApi(cardId)
+    .then(() => {
       popupDelCard.close();
-    },
-  });
-
-  popupDelCard.open();
-  popupDelCard.setEventListeners();
+      card.deleteCard(cardElement);
+    })
 }
 
 // Лайк карточки
