@@ -61,14 +61,12 @@ const popupUserInfo = new PopupWithForm({
 });
 
 function editingProfile(inputsData) {
-  const { name, about } = inputsData;
-  userName.textContent = name;
-  infoAboutMe.textContent = about;
 
   popupUserInfo.renderLoading(true);
 
-  api.editingProfile(userInfo.getUserInfo())
+  api.editingProfile(inputsData)
     .then(() => {
+      userInfo.setUserInfo(myId, inputsData);
       popupUserInfo.close()
     })
     .catch(err => {
@@ -166,13 +164,12 @@ function addNewCard(inputsData) {
     place: inputsData.place,
     linkImg: inputsData.linkImg,
   };
-  popupAddCard.setInputValue(newUserCards);
 
   popupAddCard.renderLoading(true);
 
   api.addNewCard(newUserCards)
     .then(userCardApi => {
-      cardsListItem.prepend(createCard(userCardApi, userCardApi.owner._id));
+      cardList.addItem(userCardApi.owner._id, userCardApi);
       popupAddCard.close();
     })
     .catch(err => {
@@ -237,3 +234,5 @@ changeAvatarBtn.addEventListener('click', () => {
   formValidators['popup-update'].resetValidation();
 });
 popupAvatar.setEventListeners();
+
+// Геннадий, добрый день. Хотел у вас спросить, каковы мои шансы получить работу с моим пониманием кода? Или всё таки программирование - это не моё?) Заранее спасибо. 
