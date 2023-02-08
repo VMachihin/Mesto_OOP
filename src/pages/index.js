@@ -98,7 +98,7 @@ function changeAvatar({ linkAvatar }) {
     .catch(err => {
       console.log(err);
     })
-    .finally(() => { popupAvatar.renderLoading(true) });
+    .finally(() => { popupAvatar.renderLoading(false) });
 };
 // .......................
 // .......................
@@ -178,7 +178,7 @@ function addNewCard(inputsData) {
     .catch(err => {
       console.log(err);
     })
-    .finally(() => popupAddCard.renderLoading(true));
+    .finally(() => popupAddCard.renderLoading(false));
 }
 // .......................
 // .......................
