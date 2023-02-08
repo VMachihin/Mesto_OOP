@@ -29,7 +29,7 @@
 .popup__container{background:#fff;border-radius:10px;box-shadow:0 0 25px rgba(0,0,0,.15);box-sizing:border-box;margin:195px auto 0;max-width:430px;min-height:330px;padding:34px 36px 0;position:relative}@media (max-width:550px){.popup__container{max-width:282px;min-height:322px;padding:25px 22px 0}}
 .popup__container_bigImg{border-radius:0;height:75vh;margin-top:90px;max-width:75vw;-o-object-fit:cover;object-fit:cover;padding:0}@media (max-width:320px){.popup__container_bigImg{height:299px;width:240px}}
 .popup__container_deleteCard{max-width:430px;min-height:181px}
-.popup__container_updateUserImage{min-height:272px}
+.popup__container_changeAvatar{min-height:272px}
 .popup__title{font-size:24px;font-weight:900;line-height:29px;margin:0 0 30px}@media (max-width:550px){.popup__title{font-size:18px;line-height:22px;margin:0 0 45px}}
 .popup__title_bigImg{color:#fff;font-size:12px;font-weight:400;line-height:15px;margin:10px 0 0;max-width:816px}
 .popup__form{display:flex;flex-direction:column}
@@ -45,3 +45,5 @@
 .popup__text-error{color:red;display:block;font-size:12px;font-weight:400;line-height:15px;margin-top:5px;min-height:30px;visibility:hidden}
 .popup__text-error_active{visibility:visible}
 
+
+/*# sourceMappingURL=main.css.map*/
