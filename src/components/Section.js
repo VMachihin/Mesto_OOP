@@ -1,19 +1,14 @@
 export default class Section {
-  constructor({ data, renderer }, containerSelector) {
-    this._items = data;
+  constructor({ renderer }, container) {
     this._renderer = renderer;
-    this._containerSelector = containerSelector;
+    this._container = container;
   }
 
   // Проход по массиву данных и отрисовка всех карточек
-  renderCards(myId) {
-    this._items.forEach(item => {
-      this._renderer(item, myId);
+  renderCards(myId, cards) {
+    cards.forEach(item => {
+      const card = this._renderer(item, myId)
+      this._container.prepend(card);
     });
-  }
-
-  // Добавление карточки в DOM
-  addItem(element) {
-    this._containerSelector.prepend(element);
   }
 }

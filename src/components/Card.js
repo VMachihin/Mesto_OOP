@@ -31,8 +31,8 @@ export default class Card {
     this._counterLikes.textContent = arrLikes.likes.length;
   }
 
-  deleteCard(element) {
-    element.closest('.gallery__item').remove();
+  deleteCard() {
+    this._cardElement.remove();
   }
 
   _setEventListener() {
