@@ -61,7 +61,7 @@
         <input type="text" name="name" id="name" class="popup__input popup__input_edit" placeholder="Имя" required
           minlength="2" maxlength="40" />
         <span class="popup__text-error name-error"></span>
-        <input type="text" name="aboutMe" id="aboutMe" class="popup__input popup__input_edit" placeholder="Профессия"
+        <input type="text" name="about" id="aboutMe" class="popup__input popup__input_edit" placeholder="Профессия"
           required minlength="2" maxlength="200" />
         <span class="popup__text-error aboutMe-error"></span>
         <button class="popup__btn popup__btn_save" type="submit">Сохранить</button>
@@ -96,11 +96,11 @@
     </div>
   </div>
 
-  <div class="popup popup_updateUserImage">
-    <div class="popup__container popup__container_updateUserImage">
+  <div class="popup popup_changeAvatar">
+    <div class="popup__container popup__container_changeAvatar">
       <form class="popup__form" name="popup-update" novalidate>
         <h2 class="popup__title">Обновить аватар</h2>
-        <input type="url" name="linkAvatar" id="linkAvatar" class="popup__input popup__input_urlAvatar"
+        <input type="url" name="linkAvatar" id="linkAvatar" class="popup__input popup__input_linkAvatar"
           placeholder="Ссылка на картинку" required />
         <span class="popup__text-error linkAvatar-error"></span>
         <button class="popup__btn" type="submit">Сохранить</button>
