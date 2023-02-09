@@ -11,5 +11,6 @@
 3. Grid.
 4. Flex-box.
 5. JavaScript.
+6. ООП
 
 [Для просмотра работы, нажмите](https://vitotmb.github.io/mesto/index.html)
