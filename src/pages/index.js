@@ -1,9 +1,5 @@
 import './index.css';
 
-import { gsap } from "gsap";
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollSmoother } from "gsap/ScrollSmoother.min.js";
-
 import {
   templateCard,
   infoEditBtn,
@@ -23,12 +19,6 @@ import UserInfo from '../components/UserInfo.js';
 import FormValidator from '../components/FormValidator.js';
 import { validationSettings } from '../utils/constants.js';
 import Api from '../components/Api.js';
-
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-ScrollSmoother.create({
-  wrapper: '#smooth-wrapper',
-  content: '#smooth-content'
-});
 
 let myId;
 // .......................
