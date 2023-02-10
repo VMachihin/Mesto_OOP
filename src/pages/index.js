@@ -27,10 +27,10 @@ let myId;
 const formValidators = {};
 
 // Включение валидации
-const enableValidation = settings => {
+const enableValidation = (settings) => {
   const formList = Array.from(document.querySelectorAll(settings.formSelector));
 
-  formList.forEach(formElement => {
+  formList.forEach((formElement) => {
     const validator = new FormValidator(formElement, settings);
 
     // получаем данные из атрибута `name` у формы
@@ -57,19 +57,19 @@ const userInfo = new UserInfo(userName, infoAboutMe, userAvatar);
 
 const popupUserInfo = new PopupWithForm({
   selector: '.popup_editUser',
-  handleFormSubmit: editingProfile
+  handleFormSubmit: editingProfile,
 });
 
 function editingProfile(inputsData) {
-
   popupUserInfo.renderLoading(true);
 
-  api.editingProfile(inputsData)
+  api
+    .editingProfile(inputsData)
     .then(() => {
       userInfo.setUserInfo(myId, inputsData);
-      popupUserInfo.close()
+      popupUserInfo.close();
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     })
     .finally(() => popupUserInfo.renderLoading(false));
@@ -78,7 +78,7 @@ function editingProfile(inputsData) {
 // .......................
 const popupAvatar = new PopupWithForm({
   selector: '.popup_changeAvatar',
-  handleFormSubmit: changeAvatar
+  handleFormSubmit: changeAvatar,
 });
 
 function changeAvatar({ linkAvatar }) {
@@ -88,16 +88,19 @@ function changeAvatar({ linkAvatar }) {
 
   popupAvatar.renderLoading(true);
 
-  api.changeAvatar(newAvatar)
+  api
+    .changeAvatar(newAvatar)
     .then(() => {
-      userInfo.setUserAvatar(linkAvatar)
+      userInfo.setUserAvatar(linkAvatar);
       popupAvatar.close();
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     })
-    .finally(() => { popupAvatar.renderLoading(false) });
-};
+    .finally(() => {
+      popupAvatar.renderLoading(false);
+    });
+}
 // .......................
 // .......................
 const popupWithImage = new PopupWithImage('.popup_bigImg');
@@ -110,7 +113,7 @@ function handleCardClick(name, link) {
 // .......................
 const popupDelCard = new PopupWithConfirmation({
   selector: '.popup_deleteCard',
-  handleFormSubmit: deleteCardApi
+  handleFormSubmit: deleteCardApi,
 });
 popupDelCard.setEventListeners();
 
@@ -119,44 +122,47 @@ function handleDeleteCard(cardId, cardElement, card) {
 }
 
 function deleteCardApi(cardId, cardElement, card) {
-  api.deleteCardApi(cardId)
+  api
+    .deleteCardApi(cardId)
     .then(() => {
       card.deleteCard(cardElement);
       popupDelCard.close();
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 }
 // .......................
 // .......................
 function handleLikeCard(cardId, card) {
-  api.likeCard(cardId)
-    .then(data => {
+  api
+    .likeCard(cardId)
+    .then((data) => {
       card.toggleLike();
       card.changeCounterLikes(data);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 }
 // .......................
 // .......................
 function handleDislikeCard(cardId, card) {
-  api.dislikeCard(cardId)
-    .then(data => {
+  api
+    .dislikeCard(cardId)
+    .then((data) => {
       card.toggleLike();
       card.changeCounterLikes(data);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
-    })
+    });
 }
 // .......................
 // .......................
 const popupAddCard = new PopupWithForm({
   selector: '.popup_addCards',
-  handleFormSubmit: addNewCard
+  handleFormSubmit: addNewCard,
 });
 
 function addNewCard(inputsData) {
@@ -167,12 +173,13 @@ function addNewCard(inputsData) {
 
   popupAddCard.renderLoading(true);
 
-  api.addNewCard(newUserCards)
-    .then(userCardApi => {
+  api
+    .addNewCard(newUserCards)
+    .then((userCardApi) => {
       cardList.addItem(userCardApi.owner._id, userCardApi);
       popupAddCard.close();
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     })
     .finally(() => popupAddCard.renderLoading(false));
@@ -193,7 +200,7 @@ Promise.all([api.getUserInfo(), api.getCards()])
       cardList.renderCards(myId, cards);
     }
   })
-  .catch(err => {
+  .catch((err) => {
     console.log(err);
   });
 // .......................

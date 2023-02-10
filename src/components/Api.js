@@ -14,15 +14,13 @@ export default class Api {
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
       headers: this._headers,
-    })
-      .then(res => this._checkResponse(res))
+    }).then((res) => this._checkResponse(res));
   }
 
   getCards() {
     return fetch(`${this._url}/cards`, {
       headers: this._headers,
-    })
-      .then(res => this._checkResponse(res))
+    }).then((res) => this._checkResponse(res));
   }
 
   editingProfile(userData) {
@@ -33,8 +31,7 @@ export default class Api {
         name: userData.name,
         about: userData.about,
       }),
-    })
-      .then(res => this._checkResponse(res))
+    }).then((res) => this._checkResponse(res));
   }
 
   addNewCard(newCardData) {
@@ -45,32 +42,28 @@ export default class Api {
         name: newCardData.place,
         link: newCardData.linkImg,
       }),
-    })
-      .then(res => this._checkResponse(res))
+    }).then((res) => this._checkResponse(res));
   }
 
   deleteCardApi(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this._headers,
-    })
-      .then(res => this._checkResponse(res))
+    }).then((res) => this._checkResponse(res));
   }
 
   likeCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'PUT',
       headers: this._headers,
-    })
-      .then(res => this._checkResponse(res))
+    }).then((res) => this._checkResponse(res));
   }
 
   dislikeCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'DELETE',
       headers: this._headers,
-    })
-      .then(res => this._checkResponse(res))
+    }).then((res) => this._checkResponse(res));
   }
 
   changeAvatar(linkAvatar) {
@@ -78,7 +71,6 @@ export default class Api {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify(linkAvatar),
-    })
-      .then(res => this._checkResponse(res))
+    }).then((res) => this._checkResponse(res));
   }
 }

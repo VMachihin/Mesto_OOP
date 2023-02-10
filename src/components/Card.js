@@ -1,5 +1,13 @@
 export default class Card {
-  constructor(element, myId, templateSelector, handleCardClick, handleDeleteCard, handleLikeCard, handleDislikeCard) {
+  constructor(
+    element,
+    myId,
+    templateSelector,
+    handleCardClick,
+    handleDeleteCard,
+    handleLikeCard,
+    handleDislikeCard,
+  ) {
     this._element = element;
     this._title = element.name;
     this._urlImg = element.link;
@@ -73,7 +81,7 @@ export default class Card {
       this._basketBtn.style.display = 'none';
     }
 
-    this._elementLikes.forEach(item => {
+    this._elementLikes.forEach((item) => {
       if (item._id === this._myId) {
         this._likeBtn.classList.add('card__btn_like_liked');
       }
