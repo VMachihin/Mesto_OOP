@@ -234,5 +234,3 @@ changeAvatarBtn.addEventListener('click', () => {
   formValidators['popup-update'].resetValidation();
 });
 popupAvatar.setEventListeners();
-
-// Геннадий, добрый день. Хотел у вас спросить, каковы мои шансы получить работу с моим пониманием кода? Или всё таки программирование - это не моё?) Заранее спасибо. 
