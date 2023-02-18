@@ -95,7 +95,7 @@ function changeAvatar({ linkAvatar }) {
       popupAvatar.close();
     })
     .catch((err) => {
-      console.log(err);
+      console.error(err);
     })
     .finally(() => {
       popupAvatar.renderLoading(false);
@@ -129,7 +129,7 @@ function deleteCardApi(cardId, cardElement, card) {
       popupDelCard.close();
     })
     .catch((err) => {
-      console.log(err);
+      console.error(err);
     });
 }
 // .......................
@@ -142,7 +142,7 @@ function handleLikeCard(cardId, card) {
       card.changeCounterLikes(data);
     })
     .catch((err) => {
-      console.log(err);
+      console.error(err);
     });
 }
 // .......................
@@ -155,7 +155,7 @@ function handleDislikeCard(cardId, card) {
       card.changeCounterLikes(data);
     })
     .catch((err) => {
-      console.log(err);
+      console.error(err);
     });
 }
 // .......................
@@ -180,7 +180,7 @@ function addNewCard(inputsData) {
       popupAddCard.close();
     })
     .catch((err) => {
-      console.log(err);
+      console.error(err);
     })
     .finally(() => popupAddCard.renderLoading(false));
 }
@@ -201,7 +201,7 @@ Promise.all([api.getUserInfo(), api.getCards()])
     }
   })
   .catch((err) => {
-    console.log(err);
+    console.error(err);
   });
 // .......................
 // .......................
